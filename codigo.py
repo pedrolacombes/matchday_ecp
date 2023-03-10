@@ -34,6 +34,7 @@ select_team = st.sidebar.selectbox('Selecione um time', lista_times)
 
 # Gerando base my_df apenas com o time selecionado
 my_df = data[data['Time_Jogador'] == select_team]
+data = data[data['Time_Jogador'] == select_team]
 
 # Adicionando sidebar
 lista_jogadores = my_df.Nome_Jogador.unique()
