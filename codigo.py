@@ -1052,7 +1052,7 @@ with tab6:
 		data_jogador2 = df_stat_total[(df_stat_total['Jogador'] == Jogador2)]
 
 		# Definindo a lista de estatísticas de comparação
-		lista_stats_comp = ['Gols + Assistencias', 'Gols', 'Assistências', 'Finalização', 'Finalização no gol', 'Toques', 'Passe Certo', '% Passe certo', 'Perda de posse', 'Duelo no Chão Ganho', '% Duelos no chão ganhos', 'Duelo Aéreo Ganho', '% Duelos aéreos ganhos', 'Corte', 'Desarme']
+		lista_stats_comp = ['Gols + Assistencias', 'Gols', 'Assistências', 'Finalização', 'Finalização no gol', 'Toques', 'Passe Certo', '% Passe certo', 'Perda de posse', 'Duelo no Chão Ganho','Duelo Aéreo Ganho', 'Corte', 'Desarme']
 
 		# Criando figura
 
