@@ -206,10 +206,9 @@ with tab3:
 		ax.text(2.25, 24.75, 'Valor', weight='bold', ha='right')
 		ax.plot([0.25, cols-0.62], [24.5, 24.5], lw='.5', c='black')
 
-		ax.plot([0.25, cols-0.62], [23.5, 23.5], lw='.2', c='gray')
-		ax.plot([0.25, cols-0.62], [16.5, 16.5], lw='.2', c='gray')
-		ax.plot([0.25, cols-0.62], [12.5, 12.5], lw='.2', c='gray')
-		ax.plot([0.25, cols-0.62], [5.5, 5.5], lw='.2', c='gray')
+		ax.plot([0.25, cols-0.62], [17.5, 16.5], lw='.2', c='gray')
+		ax.plot([0.25, cols-0.62], [13.5, 12.5], lw='.2', c='gray')
+		ax.plot([0.25, cols-0.62], [6.5, 5.5], lw='.2', c='gray')
 
 	  # tirando eixos
 		ax.axis('off')
@@ -350,10 +349,9 @@ with tab3:
 		ax.text(2.25, 24.75, 'Valor', weight='bold', ha='right')
 		ax.plot([0.25, cols-0.62], [24.5, 24.5], lw='.5', c='black')
 
-		ax.plot([0.25, cols-0.62], [23.5, 23.5], lw='.2', c='gray')
-		ax.plot([0.25, cols-0.62], [16.5, 16.5], lw='.2', c='gray')
-		ax.plot([0.25, cols-0.62], [12.5, 12.5], lw='.2', c='gray')
-		ax.plot([0.25, cols-0.62], [5.5, 5.5], lw='.2', c='gray')
+		ax.plot([0.25, cols-0.62], [17.5, 16.5], lw='.2', c='gray')
+		ax.plot([0.25, cols-0.62], [13.5, 12.5], lw='.2', c='gray')
+		ax.plot([0.25, cols-0.62], [6.5, 5.5], lw='.2', c='gray')
 
 	  # tirando eixos
 		ax.axis('off')
