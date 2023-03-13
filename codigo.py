@@ -636,6 +636,7 @@ with tab6:
 	from pandas import json_normalize
 
 	# Declarando lista de jogadores
+	data = data[data['Time_Jogador'] == select_team]
 	lista_jogadores = data.Nome_Jogador.unique()
 	lista_jogadores = lista_jogadores.tolist()
 
