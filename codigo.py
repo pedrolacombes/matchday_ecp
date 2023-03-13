@@ -1097,7 +1097,7 @@ with tab6:
 		  linha = linha - 1
 
 		# colocando cabeçalho
-		ax.text(0.0, 20.75, Jogador1, weight='bold', ha='left')
+		ax.text(0.25, 20.75, Jogador1, weight='bold', ha='left')
 		ax.text(1.325, 20.75, 'Stat', weight='bold', ha='center')
 		ax.text(2.25, 20.75, Jogador2, weight='bold', ha='right')
 		ax.plot([0.25, cols-0.62], [20.5, 20.5], lw='.5', c='black')
