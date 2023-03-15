@@ -66,7 +66,7 @@ with tab3:
 		bd_partidas = pd.read_csv(url)
 
 	  # Definindo lista de partidas que podem ser selecionadas
-		lista_partidas_selecionaveis = bd_partidas.Nome_Completo_Partida.unique()
+		lista_partidas_selecionaveis = my_df.Nome_Completo_Partida.unique()
 		lista_partidas_selecionaveis = lista_partidas_selecionaveis.tolist()
 		lista_selecao_partidas = st.selectbox('Selecione uma partida', lista_partidas_selecionaveis)
 
