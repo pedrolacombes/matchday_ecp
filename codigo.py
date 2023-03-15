@@ -635,9 +635,9 @@ with tab6:
 
 	# Declarando lista de jogadores
 	data = data[data['Time_Jogador'] == select_team]
-	st.dataframe(data)
 	lista_jogadores = data.Nome_Jogador.unique()
 	lista_jogadores = lista_jogadores.tolist()
+	st.write(lista_jogadores)
 
 	# Declarando o dicionario vazio
 	dicionario_completo = []
