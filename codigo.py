@@ -1033,7 +1033,7 @@ with tab6:
 		for row in range(rows):
 		    ax.plot(
 		  [0.25, cols-0.5],
-		  [row -.5, row - .5],
+		  [row -.5 +10 - rows, row - .5 + 10 - rows],
 		  ls=':',
 		  lw='.5',
 		  c='grey'
