@@ -635,6 +635,8 @@ with tab6:
 
 	# Declarando lista de jogadores
 	data = data[data['Time_Jogador'] == select_team]
+	data.reset_index(inplace = True)
+	data.drop(['index'],inplace=True, axis=1)
 	lista_jogadores = data.Nome_Jogador.unique()
 	lista_jogadores = lista_jogadores.tolist()
 	
@@ -657,8 +659,6 @@ with tab6:
 	      total = sum((data.Nome_Ato == stat) & (data.Nome_Jogador == jogador) & (data.Index_Partida == partida))
 	      dicionario_nome_ato = {'Index_Partida': partida, 'Jogador': jogador, 'nome_estatistica': stat, 'Total': total}
 	      dicionario_completo.append(dicionario_nome_ato)
-	
-	st.dataframe(data_lista_partidas)
 		
 	# Definindo dicionário para stats da coluna finalizacao_outcome
 	stats_finalizacao_outcome = ['Finalização no gol', 'Finalização para fora', 'Finalização bloqueada']
