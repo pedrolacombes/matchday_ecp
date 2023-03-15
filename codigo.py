@@ -982,9 +982,9 @@ with tab6:
 
 		cols = 4
 		if len(lista_jogadores) < 10:
-			rows = len(lista_jogadores)
+		  rows = len(lista_jogadores)
 		else:
-		rows = 10
+		  rows = 10
 
 		# Criar coordenadas com base no número de linhas e colunas
 
