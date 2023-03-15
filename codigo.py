@@ -972,6 +972,7 @@ with tab6:
 		data_ranking.sort_values(by=[Ordem], ascending=False, inplace=True)
 		data_ranking.reset_index(inplace = True)
 		data_ranking.drop(['index'],inplace=True, axis=1)
+		st.dataframe(data_ranking)
 
 		# Criando figura
 
