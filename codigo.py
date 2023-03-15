@@ -1008,7 +1008,7 @@ with tab6:
 
 		    # posicao column
 
-		    ax.text(x=.5, y=row, s=10-row, va='center', ha='right')
+		    ax.text(x=.5, y=row, s=rows-row, va='center', ha='right')
 
 		    # nome jogador column
 
