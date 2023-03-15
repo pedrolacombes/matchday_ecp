@@ -635,6 +635,7 @@ with tab6:
 
 	# Declarando lista de jogadores
 	data = data[data['Time_Jogador'] == select_team]
+	st.DataFrame(data)
 	lista_jogadores = data.Nome_Jogador.unique()
 	lista_jogadores = lista_jogadores.tolist()
 
