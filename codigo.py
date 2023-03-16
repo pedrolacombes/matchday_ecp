@@ -1123,5 +1123,5 @@ if select_mode == 'Uma partida':
 	
 	# Regerando o sidebar
 	lista_partidas = data.Nome_Completo_Partida.unique()
-	lista_partidas = lista_times.tolist()
+	lista_partidas = lista_partidas.tolist()
 	select_partida = st.sidebar.selectbox('Selecione um time', lista_partidas)
