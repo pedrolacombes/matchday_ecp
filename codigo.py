@@ -1128,3 +1128,14 @@ if select_mode == 'Uma partida':
 	lista_partidas = data.Nome_Completo_Partida.unique()
 	lista_partidas = lista_partidas.tolist()
 	select_partida = st.sidebar.selectbox('Selecione um time', lista_partidas)
+	
+	# Declarando as páginas de primeiro nível
+	tab1, tab2, tab3 = st.tabs(['Melhores Momentos', 'Stats', 'Melhores Jogadores'])
+	
+	# Codigo tab1
+	with tab1:
+		st.write('EM BREVE OS VIDEOS DOS MELHORES MOMENTOS DAS PARTIDAS')
+	with tab2:
+		st.write('EM BREVE AS ESTATISTICAS COMPLETAS DAS PARTIDAS')
+	with tab3:
+		st.write('EM BREVE O RANKING DE MELHORES JOGADORES DAS PARTIDAS')
