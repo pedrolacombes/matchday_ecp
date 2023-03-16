@@ -34,6 +34,7 @@ select_mode = st.sidebar.selectbox('Eu quero ver os dados e videos de:', ['Um jo
 if select_mode == 'Um jogador':
 				   
 	# Regerando o sidebar
+	selec_mode = st.sidebar.selectbox('Eu quero ver os dados e videos de:', ['Um jogador', 'Uma partida']
 	lista_times = data.Time_Jogador.unique()
 	lista_times = lista_times.tolist()
 	select_team = st.sidebar.selectbox('Selecione um time', lista_times)
