@@ -26,6 +26,7 @@ url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&s
 data = pd.read_csv(url)
 data = data[data['Index_Partida'] > 0]
 data = pd.DataFrame(data)
+data
 
 # Regerando o sidebar
 lista_times = data.Time_Jogador.unique()
