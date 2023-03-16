@@ -576,8 +576,7 @@ with tab1:
   df_visitantes = pd.DataFrame(dicionario_partidas_visitantes.items(), columns=['id_partida', 'nome_visitante'])
 
   # Definindo filtros para stats e partidas
-  filtros_stats_videos = ['Gols', 'Assistências', 'Passes', 'Finalizações', 'Duelos', 'Desarmes', 'Perdas de posse',
-                          'Toques']
+  filtros_stats_videos = ['Todos os lances','Gols', 'Assistências', 'Finalizações', 'Duelos', 'Erros ofensivos', 'Recuperações de bola e cortes']
   filtros_partidas_videos = list(dicionario_partidas_visitantes.values())
   option_stat_video = st.multiselect('Selecione uma estatística', filtros_stats_videos)
   option_partidas_videos = st.multiselect('Selecione uma partida', filtros_partidas_videos)		
