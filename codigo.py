@@ -30,7 +30,7 @@ data = pd.DataFrame(data)
 # Sidebar inicial com seleção do modo do site
 select_mode = st.sidebar.selectbox('Eu quero ver os dados e videos de:', ['Um jogador', 'Uma partida'])
 
-# If condition para direcionar para a pagina certa
+# If condition para direcionar para a pagina jogador
 if select_mode == 'Um jogador':
 				   
 	# Regerando o sidebar
@@ -1117,3 +1117,11 @@ if select_mode == 'Um jogador':
 
 			#plotando figura streamlit
 			fig
+
+# If condition para direcionar para a pagina jogador
+if select_mode == 'Uma partida':
+	
+	# Regerando o sidebar
+	lista_partidas = data.Nome_Completo_Partida.unique()
+	lista_partidas = lista_times.tolist()
+	select_partida = st.sidebar.selectbox('Selecione um time', lista_partidas)
