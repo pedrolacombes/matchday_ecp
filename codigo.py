@@ -28,13 +28,13 @@ data = data[data['Index_Partida'] > 0]
 data = pd.DataFrame(data)
 
 # Sidebar inicial com seleção do modo do site
-select_mode = st.sidebar.selectbox('Eu quero ver os dados e videos de:', ['Um jogador', 'Uma partida']
+select_mode = st.sidebar.selectbox('Eu quero ver os dados e videos de:', ['Um jogador', 'Uma partida'])
 
 # If condition para direcionar para a pagina certa
 if select_mode == 'Um jogador':
 				   
 	# Regerando o sidebar
-	selec_mode = st.sidebar.selectbox('Eu quero ver os dados e videos de:', ['Um jogador', 'Uma partida']
+	selec_mode = st.sidebar.selectbox('Eu quero ver os dados e videos de:', ['Um jogador', 'Uma partida'])
 	lista_times = data.Time_Jogador.unique()
 	lista_times = lista_times.tolist()
 	select_team = st.sidebar.selectbox('Selecione um time', lista_times)
