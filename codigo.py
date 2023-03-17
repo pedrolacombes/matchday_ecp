@@ -31,6 +31,15 @@ data = pd.DataFrame(data)
 select_mode = st.sidebar.selectbox('Eu quero ver os dados e videos de:', ['Um jogador', 'Uma partida'])
 
 ## Definindo a base df_geral que converte a base input em algo mais estruturado
+
+# Declarando lista de partidas
+lista_partidas = data.Index_Partida.unique()
+lista_partidas = lista_partidas.tolist()
+
+# Declarando lista de jogadores
+lista_jogadores = data.Nome_Jogador.unique()
+lista_jogadores = lista_jogadores.tolist()
+
 # Declarando o dicionario vazio
 dicionario_completo = []
 
