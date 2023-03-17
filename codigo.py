@@ -27,7 +27,18 @@ data = pd.read_csv(url)
 data = data[data['Index_Partida'] > 0]
 data = pd.DataFrame(data)
 
-# Sidebar inicial com seleção do modo do site
+## Puxando o arquivo com a base de videos
+sheet_id = '1iJMBXj_sbSowhu5sZT3pCLRnSRbydgjbxg-PlEAoZvc'
+sheet_name = 'Videos'
+url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
+data_videos = pd.read_csv(url)
+data_videos = data_videos[data_videos['Nome_Jogador'] == select_player]
+
+# Convertendo base de videos para dataframe
+
+my_df_video = pd.DataFrame(data_videos)
+
+## Sidebar inicial com seleção do modo do site
 select_mode = st.sidebar.selectbox('Eu quero ver os dados e videos de:', ['Um jogador', 'Uma partida'])
 
 ## Definindo a base df_geral que converte a base input em algo mais estruturado
@@ -1304,7 +1315,10 @@ if select_mode == 'Uma partida':
 	
 	# Codigo tab1
 	with tab1:
-		st.write('EM BREVE OS VIDEOS DOS MELHORES MOMENTOS DAS PARTIDAS')
+		url = data_videos.loc[data_videos['Nome_Completo_Partida'] == select_partida,'Link_youtube']
+		legenda = 'Melhores momentos ' + select_partida
+		st.write(legenda)
+		st.video(url)
 	
 	with tab2:
 		
