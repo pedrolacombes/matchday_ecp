@@ -225,7 +225,7 @@ if select_mode == 'Um jogador':
 	lista_jogadores = my_df.Nome_Jogador.unique()
 	lista_jogadores = lista_jogadores.tolist()
 	select_player = st.sidebar.selectbox('Selecione um jogador', lista_jogadores)
-	st.sidebar.write('Disponível agora video de melhores momentos das partidas e estatisticas de cada jogo. Para ver, selecionar *Uma Partida* na primeira caixinha')
+	st.sidebar.write('Disponível agora video de melhores momentos e estatisticas de cada jogo. Para ver, selecionar *Uma Partida* na primeira caixinha')
 
 	# Gerando my_df apenas para jogador selecionado
 	my_df = my_df[my_df['Nome_Jogador'] == select_player]
@@ -1309,6 +1309,7 @@ if select_mode == 'Uma partida':
 	lista_partidas = data.Nome_Completo_Partida.unique()
 	lista_partidas = lista_partidas.tolist()
 	select_partida = st.sidebar.selectbox('Selecione um time', lista_partidas)
+	st.sidebar.write('Disponível agora video de melhores momentos e estatisticas de cada jogo. Para ver, selecionar *Uma Partida* na primeira caixinha')
 	
 	# Declarando as páginas de primeiro nível
 	tab1, tab2 = st.tabs(['Melhores Momentos', 'Stats'])
