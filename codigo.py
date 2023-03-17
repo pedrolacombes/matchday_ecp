@@ -1318,6 +1318,10 @@ if select_mode == 'Uma partida':
 				      (data_videos['Nome_Stat_Video'] == 'Melhores Momentos'),'Link_youtube'].values[0]
 		legenda = 'Melhores momentos ' + select_partida
 		st.write(legenda)
+		
+		if url == 'Null':
+			st.write('Ainda não há videos de melhores momentos desta partida')
+		else:		
 		st.video(url)
 	
 	with tab2:
