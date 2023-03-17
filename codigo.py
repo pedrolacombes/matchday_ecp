@@ -30,6 +30,167 @@ data = pd.DataFrame(data)
 # Sidebar inicial com seleção do modo do site
 select_mode = st.sidebar.selectbox('Eu quero ver os dados e videos de:', ['Um jogador', 'Uma partida'])
 
+## Definindo a base df_geral que converte a base input em algo mais estruturado
+# Declarando o dicionario vazio
+dicionario_completo = []
+
+# Definindo dicionário para stats da coluna nome_ato
+
+stats_nome_ato = ['Passe', 'Finalização', 'Corte', 'Cartão Amarelo', 'Cartão Vermelho', 'Bloqueio de chute','Desarme', 'Drible', 'Falta cometida', 'Falta sofrida', 'Perda de posse']
+
+for partida in lista_partidas:
+  for jogador in lista_jogadores:
+    for stat in stats_nome_ato:
+      total = sum((data.Nome_Ato == stat) & (data.Nome_Jogador == jogador) & (data.Index_Partida == partida))
+      dicionario_nome_ato = {'Index_Partida': partida, 'Nome_Jogador': jogador, 'nome_estatistica': stat, 'Total_Estatistica': total}
+      dicionario_completo.append(dicionario_nome_ato)
+
+# Definindo dicionário para stats da coluna finalizacao_outcome
+
+stats_finalizacao_outcome = ['Finalização no gol', 'Finalização para fora', 'Finalização bloqueada']
+
+for partida in lista_partidas:
+  for jogador in lista_jogadores:  
+    for stat in stats_finalizacao_outcome:
+      total = sum((data.Nome_Finalizacao_Outcome == stat) & (data.Nome_Jogador == jogador) & (data.Index_Partida == partida))
+      dicionario_finalizacao_outcome = {'Index_Partida': partida, 'Nome_Jogador': jogador, 'nome_estatistica': stat, 'Total_Estatistica': total}
+      dicionario_completo.append(dicionario_finalizacao_outcome)
+
+# Definindo dicionário para stats da coluna pass_outcome
+
+stats_pass_outcome = ['Passe Certo', 'Passe Errado']
+
+for partida in lista_partidas:
+  for jogador in lista_jogadores:
+    for stat in stats_pass_outcome:
+      total = sum((data.Nome_Pass_Outcome == stat) & (data.Nome_Jogador == jogador) & (data.Index_Partida == partida))
+      dicionario_pass_outcome = {'Index_Partida': partida, 'Nome_Jogador': jogador, 'nome_estatistica': stat, 'Total_Estatistica': total}
+      dicionario_completo.append(dicionario_pass_outcome)
+
+# Definindo dicionário para stats da coluna nome_duelo
+
+stats_nome_duelo = ['Duelo no Chão', 'Duelo Aéreo']
+
+for partida in lista_partidas:
+  for jogador in lista_jogadores:
+    for stat in stats_nome_duelo:
+      total = sum((data.Nome_Duelo == stat) & (data.Nome_Jogador == jogador) & (data.Index_Partida == partida))
+      dicionario_nome_duelo = {'Index_Partida': partida, 'Nome_Jogador': jogador, 'nome_estatistica': stat, 'Total_Estatistica': total}
+      dicionario_completo.append(dicionario_nome_duelo)
+
+# Definindo dicionário para stats da coluna duelo_outcome
+
+stats_duelo_outcome = ['Duelo no Chão Ganho', 'Duelo Aéreo Ganho', 'Duelo no chão perdido', 'Duelo aéreo perdido']
+
+for partida in lista_partidas:
+  for jogador in lista_jogadores:
+    for stat in stats_duelo_outcome:
+      total = sum((data.Nome_Duelo_Outcome == stat) & (data.Nome_Jogador == jogador) & (data.Index_Partida == partida))
+      dicionario_duelo_outcome = {'Index_Partida': partida, 'Nome_Jogador': jogador, 'nome_estatistica': stat, 'Total_Estatistica': total}
+      dicionario_completo.append(dicionario_duelo_outcome)
+
+# Definindo dicionário para stats da colune index_gol
+
+stat_index_gol = 1
+
+for partida in lista_partidas:
+  for jogador in lista_jogadores:
+    total = sum((data.Index_Gol == stat_index_gol) & (data.Nome_Jogador == jogador) & (data.Index_Partida == partida))
+    dicionario_index_gol = {'Index_Partida': partida, 'Nome_Jogador': jogador, 'nome_estatistica': 'Gol', 'Total_Estatistica': total}
+    dicionario_completo.append(dicionario_index_gol)
+
+# Definindo dicionário para stats da coluna index_assistencia
+
+stat_index_assist = 1
+
+for partida in lista_partidas:
+  for jogador in lista_jogadores:
+    total = sum((data.Index_Assist == stat_index_assist) & (data.Nome_Jogador == jogador) & (data.Index_Partida == partida))
+    dicionario_index_assist = {'Index_Partida': partida, 'Nome_Jogador': jogador, 'nome_estatistica': 'Assistencia', 'Total_Estatistica': total}
+    dicionario_completo.append(dicionario_index_assist)
+
+# Definindo dicionário para stats da coluna index_toque
+
+stat_index_toque = 1
+
+for partida in lista_partidas:
+  for jogador in lista_jogadores:
+    total = sum((data.Index_Toque == stat_index_toque) & (data.Nome_Jogador == jogador) & (data.Index_Partida == partida))
+    dicionario_index_toque = {'Index_Partida': partida, 'Nome_Jogador': jogador, 'nome_estatistica': 'Toques', 'Total_Estatistica': total}
+    dicionario_completo.append(dicionario_index_toque)
+
+# Definindo dicionário para % de passes certos
+
+for partida in lista_partidas:
+  for jogador in lista_jogadores:
+    total_passes = sum((data.Nome_Ato == 'Passe') & (data.Nome_Jogador == jogador) & (data.Index_Partida == partida))
+    total_passes_certos = sum((data.Nome_Pass_Outcome == 'Passe Certo') & (data.Nome_Jogador == jogador) & (data.Index_Partida == partida))
+
+    if total_passes > 0:
+      percentual_passes_certos = total_passes_certos / total_passes
+
+    else:
+      percentual_passes_certos = 0
+
+    dicionario_percentual_passes_certos = {'Index_Partida': partida, 'Nome_Jogador': jogador, 'nome_estatistica': '% Passes certos', 'Total_Estatistica': percentual_passes_certos}
+    dicionario_completo.append(dicionario_percentual_passes_certos)
+
+# Definindo dicionário para % de duelos aéreos ganhos
+
+for partida in lista_partidas:
+  for jogador in lista_jogadores:
+    total_duelos_aereos = sum((data.Nome_Duelo == 'Duelo Aéreo') & (data.Nome_Jogador == jogador) & (data.Index_Partida == partida))
+    total_duelos_aereos_ganhos = sum((data.Nome_Duelo_Outcome == 'Duelo Aéreo Ganho') & (data.Nome_Jogador == jogador) & (data.Index_Partida == partida))
+
+    if total_duelos_aereos > 0:
+      percentual_duelos_aereos_ganhos = total_duelos_aereos_ganhos / total_duelos_aereos
+
+    else:
+      percentual_duelos_aereos_ganhos = 0
+
+    dicionario_percentual_duelos_aereos = {'Index_Partida': partida, 'Nome_Jogador': jogador, 'nome_estatistica': '% Duelos aéreos ganhos', 'Total_Estatistica': percentual_duelos_aereos_ganhos}
+    dicionario_completo.append(dicionario_percentual_duelos_aereos)
+
+# Definindo dicionário para % de duelos no chão ganhos
+
+for partida in lista_partidas:
+  for jogador in lista_jogadores:
+    total_duelos_chao = sum((data.Nome_Duelo == 'Duelo no Chão') & (data.Nome_Jogador == jogador) & (data.Index_Partida == partida))
+    total_duelos_chao_ganhos = sum((data.Nome_Duelo_Outcome == 'Duelo no Chão Ganho') & (data.Nome_Jogador == jogador) & (data.Index_Partida == partida))
+
+    if total_duelos_chao > 0:
+      percentual_duelos_chao_ganhos = total_duelos_chao_ganhos / total_duelos_chao
+
+    else:
+      percentual_duelos_chao_ganhos = 0
+
+    dicionario_percentual_duelos_chao = {'Index_Partida': partida, 'Nome_Jogador': jogador, 'nome_estatistica': '% Duelos no chão ganhos', 'Total_Estatistica': percentual_duelos_chao_ganhos}
+    dicionario_completo.append(dicionario_percentual_duelos_chao)
+
+# Definindo dicionário gols + assistencias
+
+for partida in lista_partidas:
+  for jogador in lista_jogadores:
+    total_gols = sum((data.Index_Gol == 1) & (data.Nome_Jogador == jogador) & (data.Index_Partida == partida))
+    total_assistencias = sum((data.Index_Assist == 1) & (data.Nome_Jogador == jogador) & (data.Index_Partida == partida))
+    gols_assistencias = total_gols + total_assistencias
+
+    dicionario_gols_assist = {'Index_Partida': partida, 'Nome_Jogador': jogador, 'nome_estatistica': 'Gols + Assistencias', 'Total_Estatistica': gols_assistencias}
+    dicionario_completo.append(dicionario_gols_assist)
+
+# Convertendo dicionário em dataframe
+df_geral = pd.json_normalize(dicionario_completo)
+
+## Criando a aba df_final que é o resumo das informações a serem usadas no front
+# Criando dataframe geral que será usado como base para todas as transformações do front
+df_final = df_geral.merge(data[['Time_Jogador','Nome_Jogador']], on='Nome_Jogador', how='left')
+df_final.drop_duplicates(keep='first', inplace=True, ignore_index=True)
+df_final = df_final.merge(data[['Nome_Completo_Partida', 'Index_Partida']], on='Index_Partida', how='left')
+df_final.drop_duplicates(keep='first', inplace=True, ignore_index=True)
+df_final = df_final.merge(data[['Nome_Campeonato', 'Index_Partida']], on='Index_Partida', how='left')
+df_final.drop_duplicates(keep='first', inplace=True, ignore_index=True)
+
+
 # If condition para direcionar para a pagina jogador
 if select_mode == 'Um jogador':
 				   
@@ -861,7 +1022,7 @@ if select_mode == 'Um jogador':
 				dicionario_completo.append(dicionario_nome_ato)
 
 		# Convertendo dicionário em dataframe
-		df_stat_por_partida = pd.json_normalize(dicionario_completo)
+		df_geral = pd.json_normalize(dicionario_completo)
 
 		# Declarando lista de jogadores
 		lista_jogadores = data.Nome_Jogador.unique()
@@ -876,8 +1037,8 @@ if select_mode == 'Um jogador':
 
 		for jogador in lista_jogadores:
 
-			data_total = df_stat_por_partida[df_stat_por_partida['Jogador']==jogador]
-			lista_partidas = df_stat_por_partida.Index_Partida.unique()
+			data_total = df_geral[df_geral['Jogador']==jogador]
+			lista_partidas = df_geral.Index_Partida.unique()
 			lista_partidas = lista_partidas.tolist()
 			numero_jogos = len(lista_partidas)
 
@@ -890,8 +1051,8 @@ if select_mode == 'Um jogador':
 
 		for jogador in lista_jogadores:
 
-			data_total = df_stat_por_partida[df_stat_por_partida['Jogador']==jogador]
-			lista_partidas = df_stat_por_partida.Index_Partida.unique()
+			data_total = df_geral[df_geral['Jogador']==jogador]
+			lista_partidas = df_geral.Index_Partida.unique()
 			lista_partidas = lista_partidas.tolist()
 			numero_jogos = len(lista_partidas)
 
@@ -911,8 +1072,8 @@ if select_mode == 'Um jogador':
 
 		for jogador in lista_jogadores:
 
-			data_total = df_stat_por_partida[df_stat_por_partida['Jogador']==jogador]
-			lista_partidas = df_stat_por_partida.Index_Partida.unique()
+			data_total = df_geral[df_geral['Jogador']==jogador]
+			lista_partidas = df_geral.Index_Partida.unique()
 			lista_partidas = lista_partidas.tolist()
 			numero_jogos = len(lista_partidas)
 
@@ -932,8 +1093,8 @@ if select_mode == 'Um jogador':
 
 		for jogador in lista_jogadores:
 
-			data_total = df_stat_por_partida[df_stat_por_partida['Jogador']==jogador]
-			lista_partidas = df_stat_por_partida.Index_Partida.unique()
+			data_total = df_geral[df_geral['Jogador']==jogador]
+			lista_partidas = df_geral.Index_Partida.unique()
 			lista_partidas = lista_partidas.tolist()
 			numero_jogos = len(lista_partidas)
 
@@ -1135,7 +1296,98 @@ if select_mode == 'Uma partida':
 	# Codigo tab1
 	with tab1:
 		st.write('EM BREVE OS VIDEOS DOS MELHORES MOMENTOS DAS PARTIDAS')
+	
 	with tab2:
-		st.write('EM BREVE AS ESTATISTICAS COMPLETAS DAS PARTIDAS')
+		
+		# Página de estatísticas de uma partida
+
+		# Gerando dataframe tratado com os dados da partida
+		df_partida = df_final[df_final['Nome_Completo_Partida']==select_partida]
+		df_partida = df_partida.groupby(['Time_Jogador','nome_estatistica'])['Total_Estatistica'].sum()
+		df_partida = pd.DataFrame(df_partida)
+		df_partida.reset_index(inplace = True)
+
+		# Importando base de partidas
+		import pandas as pd
+		sheet_id = '1iJMBXj_sbSowhu5sZT3pCLRnSRbydgjbxg-PlEAoZvc'
+		sheet_name = 'Partidas'
+		url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
+		base_partidas = pd.read_csv(url)
+
+		# Limpando df_partida para informações dos dois times presentes na partida
+		time_mandante = base_partidas.loc[base_partidas['Nome_Completo_Partida']==select_partida, 'Nome_Time_Casa'].values[0]
+		time_visitante = base_partidas.loc[base_partidas['Nome_Completo_Partida']==select_partida, 'Nome_Time_Visitante'].values[0]
+
+		df_partida = df_partida[(df_partida['Time_Jogador']==time_visitante) | (df_partida['Time_Jogador']==time_mandante)]
+		
+		# Definindo a lista de estatísticas de comparação
+		lista_stats_comp = ['Gol', 'Finalização', 'Finalização no gol','Finalização para fora','Finalização bloqueada', 'Toques', 'Passe Certo', '% Passes certos', 'Perda de posse', 
+												'Duelo no Chão Ganho','Duelo Aéreo Ganho', 'Corte', 'Desarme']
+
+		# Criando figura
+
+		fig, ax = plt.subplots(figsize=(8,20))
+
+		# Definindo número de linhas e colunas
+
+		cols = 3
+		rows = 20
+
+		# Criar coordenadas com base no número de linhas e colunas
+
+		# Adicionando bordas
+
+		ax.set_ylim(-1, rows + 1)
+		ax.set_xlim(0.25, cols-0.5)
+
+		# setando a linha inicial
+
+		linha = 20
+
+		# loop para preencher a tabela chamando as estatísticas
+
+		for stat_comp in lista_stats_comp:
+			if(stat_comp != '% Passes certos'):
+				stat_time_mandante = df_partida.loc[(df_partida['nome_estatistica'] == stat_comp) & (df_partida['Time_Jogador'] == time_mandante), 'Total_Estatistica'].values[0]
+				stat_time_visitante = df_partida.loc[(df_partida['nome_estatistica'] == stat_comp) & (df_partida['Time_Jogador'] == time_visitante), 'Total_Estatistica'].values[0]
+			else:
+				total_passe_mandante = df_partida.loc[(df_partida['nome_estatistica'] == 'Passe') & (df_partida['Time_Jogador'] == time_mandante), 'Total_Estatistica'].values[0]
+				total_passe_certo_mandante = df_partida.loc[(df_partida['nome_estatistica'] == 'Passe Certo') & (df_partida['Time_Jogador'] == time_mandante), 'Total_Estatistica'].values[0]
+				total_passe_visitante = df_partida.loc[(df_partida['nome_estatistica'] == 'Passe') & (df_partida['Time_Jogador'] == time_visitante), 'Total_Estatistica'].values[0]
+				total_passe_certo_visitante = df_partida.loc[(df_partida['nome_estatistica'] == 'Passe Certo') & (df_partida['Time_Jogador'] == time_visitante), 'Total_Estatistica'].values[0]
+				stat_time_mandante = total_passe_certo_mandante / total_passe_mandante
+				stat_time_visitante = total_passe_certo_visitante / total_passe_visitante
+				stat_time_mandante = '{:.1%}'.format(stat_time_mandante)
+				stat_time_visitante = '{:.1%}'.format(stat_time_visitante)
+
+			if stat_time_mandante > stat_time_visitante:
+				color1 = 'green'
+				alpha1 = 0.1
+			else:
+				color1 = 'white'
+				alpha1 = 0.0
+			if stat_time_visitante > stat_time_mandante:
+				color2 = 'blue'
+				alpha2 = 0.1
+			else:
+				color2 = 'white'
+				alpha2 = 0.0
+			ax.text(x=0.5, y=linha, s=stat_time_mandante, va='center', ha='right', bbox = dict(facecolor=color1, alpha=alpha1))
+			ax.text(x=2.25, y=linha, s=stat_time_visitante, va='center', ha='right', bbox = dict(facecolor=color2, alpha=alpha2))
+			ax.text(x=1.325, y=linha, s=stat_comp, va='center', ha='center')
+			linha = linha - 1
+
+		# colocando cabeçalho
+		ax.text(0.3, 20.75, time_mandante, weight='bold', ha='left')
+		ax.text(1.325, 20.75, 'Stat', weight='bold', ha='center')
+		ax.text(2.3, 20.75, time_visitante, weight='bold', ha='right')
+		ax.plot([0.25, cols-0.62], [20.5, 20.5], lw='.5', c='black')
+
+		# tirando eixos
+		ax.axis('off')
+
+		#plotando figura streamlit
+		fig
+		
 	with tab3:
 		st.write('EM BREVE O RANKING DE MELHORES JOGADORES DAS PARTIDAS')
