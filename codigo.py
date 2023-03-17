@@ -225,6 +225,7 @@ if select_mode == 'Um jogador':
 	lista_jogadores = my_df.Nome_Jogador.unique()
 	lista_jogadores = lista_jogadores.tolist()
 	select_player = st.sidebar.selectbox('Selecione um jogador', lista_jogadores)
+	st.sidebar.write('Disponível agora video de melhores momentos das partidas e estatisticas de cada jogo. Para ver, selecionar 'Uma Partida' na primeira caixinha')
 
 	# Gerando my_df apenas para jogador selecionado
 	my_df = my_df[my_df['Nome_Jogador'] == select_player]
