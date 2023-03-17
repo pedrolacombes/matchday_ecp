@@ -32,7 +32,6 @@ sheet_id = '1iJMBXj_sbSowhu5sZT3pCLRnSRbydgjbxg-PlEAoZvc'
 sheet_name = 'Videos'
 url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
 data_videos = pd.read_csv(url)
-data_videos = data_videos[data_videos['Nome_Jogador'] == select_player]
 
 # Convertendo base de videos para dataframe
 
