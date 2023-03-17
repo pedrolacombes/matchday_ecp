@@ -1322,7 +1322,7 @@ if select_mode == 'Uma partida':
 		if url == 'Null':
 			st.write('Ainda não há videos de melhores momentos desta partida')
 		else:		
-		st.video(url)
+			st.video(url)
 	
 	with tab2:
 		
