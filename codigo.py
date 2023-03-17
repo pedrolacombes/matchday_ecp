@@ -1310,7 +1310,7 @@ if select_mode == 'Uma partida':
 	select_partida = st.sidebar.selectbox('Selecione um time', lista_partidas)
 	
 	# Declarando as páginas de primeiro nível
-	tab1, tab2, tab3 = st.tabs(['Melhores Momentos', 'Stats', 'Melhores Jogadores'])
+	tab1, tab2 = st.tabs(['Melhores Momentos', 'Stats'])
 	
 	# Codigo tab1
 	with tab1:
@@ -1415,6 +1415,4 @@ if select_mode == 'Uma partida':
 
 		#plotando figura streamlit
 		fig
-		
-	with tab3:
-		st.write('EM BREVE O RANKING DE MELHORES JOGADORES DAS PARTIDAS')
+
