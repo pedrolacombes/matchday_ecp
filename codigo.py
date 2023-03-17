@@ -1316,6 +1316,7 @@ if select_mode == 'Uma partida':
 	with tab1:
 		url = data_videos.loc[data_videos['Nome_Completo_Partida'] == select_partida,'Link_youtube'].values[0]
 		legenda = 'Melhores momentos ' + select_partida
+		st.write(url)
 		st.write(legenda)
 		st.video(url)
 	
