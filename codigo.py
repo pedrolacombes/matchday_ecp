@@ -1314,7 +1314,7 @@ if select_mode == 'Uma partida':
 	
 	# Codigo tab1
 	with tab1:
-		url = data_videos.loc[data_videos['Nome_Completo_Partida'] == select_partida,'Link_youtube']
+		url = data_videos.loc[data_videos['Nome_Completo_Partida'] == select_partida,'Link_youtube'].values[0]
 		legenda = 'Melhores momentos ' + select_partida
 		st.write(legenda)
 		st.video(url)
