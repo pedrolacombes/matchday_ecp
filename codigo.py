@@ -353,7 +353,7 @@ if select_mode == 'Um jogador':
 				if stat != '% Passes certos' or stat!='% Duelos no chão ganhos' or stat!='% Duelos aéreos ganhos':
 					stat_valor = df_stat_partida.loc[df_stat_partida['nome_estatistica'] == stat, 'Total_Estatistica'].values[0]
 				if stat == '% Passes certos':
-					passe_certo = df_stat_partida.loc[df_stat_partida['nome_estatistica'] == 'Passe certo', 'Total_Estatistica'].values[0]
+					passe_certo = df_stat_partida.loc[df_stat_partida['nome_estatistica'] == 'Passe Certo', 'Total_Estatistica'].values[0]
 					passe = df_stat_partida.loc[df_stat_partida['nome_estatistica'] == 'Passe', 'Total_Estatistica'].values[0]
 					if passe > 0:
 						stat_valor = passe_certo / passe
