@@ -592,6 +592,9 @@ if select_mode == 'Um jogador':
 
 	with tab1:
 
+		# Filtrando my_df_video para jogador selecionado
+		my_df_video = my_df_video[my_df_video['Nome_Jogador'] == select_player]
+		
 		# Criar lista com lista única das partidas
 		Partidas = my_df.Index_Partida.unique()
 		Partidas = Partidas.tolist()
