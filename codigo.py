@@ -246,6 +246,7 @@ if select_mode == 'Um jogador':
 
 	# Gerando my_df apenas para jogador selecionado
 	my_df = my_df[my_df['Nome_Jogador'] == select_player]
+	my_df.reset_index(inplace = True)
 
 	# declarando as 4 macro abas do aplicativo
 
