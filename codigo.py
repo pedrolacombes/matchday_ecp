@@ -36,6 +36,8 @@ url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&s
 data_videos = pd.read_csv(url)
 my_df_video = pd.DataFrame(data_videos)
 
+my_df_video
+
 
 
 ## Sidebar inicial com seleção do modo do site
