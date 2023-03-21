@@ -267,6 +267,7 @@ if select_mode == 'Um jogador':
 			# Filtrando df_final para a partida selecionada
 			df_stat_partida = df_final[df_final['Nome_Completo_Partida'] == lista_selecao_partidas]
 			df_stat_partida = df_stat_partida[df_stat_partida['Nome_Jogador'] == select_player]
+			st.dataframe(df_stat_partida)
 			
 			#Definindo lista de estatisticas em ordem
 			stats = ['Gols + Assistências', 'Gol', 'Assistência', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Toque', 'Passe Certo', '% Passes certos', 
