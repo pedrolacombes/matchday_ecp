@@ -350,8 +350,30 @@ if select_mode == 'Um jogador':
 			numero_jogos = len(lista_partidas_selecionaveis)
 
 			for stat in stats:
-				stat_valor = df_stat_partida.loc[df_stat_partida['nome_estatistica'] == stat, 'Total_Estatistica'].values[0]
-				if type(stat_valor) != str and stat != 'Classificação média Matchday':
+				if stat != '% Passes certos' or stat!='% Duelos no chão ganhos' or stat!='% Duelos aéreos ganhos':
+					stat_valor = df_stat_partida.loc[df_stat_partida['nome_estatistica'] == stat, 'Total_Estatistica'].values[0]
+				if stat == '% Passes certos':
+					passe_certo = df_stat_partida.loc[df_stat_partida['nome_estatistica'] == 'Passe certo', 'Total_Estatistica'].values[0]
+					passe = df_stat_partida.loc[df_stat_partida['nome_estatistica'] == 'Passe', 'Total_Estatistica'].values[0]
+					if passe > 0:
+						stat_valor = passe_certo / passe
+					else:
+						stat_valor = 0
+				if stat == '% Duelos no chão ganhos':
+					duelo_chao_ganho = df_stat_partida.loc[df_stat_partida['nome_estatistica'] == 'Duelo no Chão Ganho', 'Total_Estatistica'].values[0]
+					duelo_chao = df_stat_partida.loc[df_stat_partida['nome_estatistica'] == 'Duelo no Chão', 'Total_Estatistica'].values[0]
+					if duelo_chao > 0:
+						stat_valor = duelo_chao_ganho / duelo_chao
+					else:
+						stat_valor = 0
+				if stat == '% Duelos aéreos ganhos':
+					duelo_aereo_ganho = df_stat_partida.loc[df_stat_partida['nome_estatistica'] == 'Duelo Aéreo Ganho', 'Total_Estatistica'].values[0]
+					duelo_aereo = df_stat_partida.loc[df_stat_partida['nome_estatistica'] == 'Duelo Aéreo', 'Total_Estatistica'].values[0]
+					if duelo_aereo > 0:
+						stat_valor = duelo_aereo_ganho / duelo_aereo
+					else:
+						stat_valor = 0				
+				if stat != '% Passes certos' or stat!='% Duelos no chão ganhos' or stat!='% Duelos aéreos ganhos':
 					stat_valor = stat_valor / numero_jogos
 				ax.text(x=0.25, y=linha, s=stat+' por partida', va='center', ha='left')
 				if stat == '% Passes certos' or stat=='% Duelos no chão ganhos' or stat=='% Duelos aéreos ganhos':
