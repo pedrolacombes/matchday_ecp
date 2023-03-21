@@ -36,7 +36,7 @@ data = load_geral()
 ## Puxando o arquivo com a base de videos
 
 @st.cache_data
-def load_data_videos:
+def load_data_videos():
 	sheet_id = '1iJMBXj_sbSowhu5sZT3pCLRnSRbydgjbxg-PlEAoZvc'
 	sheet_name = 'Videos'
 	url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
