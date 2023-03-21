@@ -271,7 +271,7 @@ if select_mode == 'Um jogador':
 			
 			#Definindo lista de estatisticas em ordem
 			stats = ['Gols + Assistencias', 'Gol', 'Assistencia', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Toques', 'Passe Certo', '% Passes certos', 
-				 'Perda de posse', 'Duelo no Chão Ganho', '% Duelos no chão ganhoss', 'Duelo Aéreo Ganho','% Duelos aéreos ganhos', 'Desarme', 'Corte', 'Bloqueio de chute']
+				 'Perda de posse', 'Duelo no Chão Ganho', '% Duelos no chão ganhos', 'Duelo Aéreo Ganho','% Duelos aéreos ganhos', 'Desarme', 'Corte', 'Bloqueio de chute']
 
 			# Criando figura
 
