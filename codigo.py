@@ -329,7 +329,8 @@ if select_mode == 'Um jogador':
 			df_stat_campeonato = df_final[df_final['Nome_Campeonato'] == campeonato_escolhido]
 			df_stat_campeonato = df_final[df_final['Nome_Jogador'] == select_player]			
 			df_stat_campeonato = df_stat_campeonato.groupby(['Nome_Jogador','nome_estatistica'])['Total_Estatistica'].sum()
-			df_stat_campeonato
+			df_stat_campeonato = pd.DataFrame(df_stat_campeonato)
+			df_stat_campeonato.reset_index(inplace = True)
 
 			# Criando figura
 
@@ -358,7 +359,7 @@ if select_mode == 'Um jogador':
 			for stat in stats:
 				st.write(stat)
 				if stat != '% Passes certos' and stat!='% Duelos no chão ganhos' and stat!='% Duelos aéreos ganhos':
-					stat_valor = df_stat_campeonato.loc[df_stat_campeonato['nome_estatistica'] == 'Passe', 'Total_Estatistica']
+					stat_valor = df_stat_campeonato.loc[df_stat_campeonato['nome_estatistica'] == 'Passe', 'Total_Estatistica'].values[0]
 					st.write(stat_valor)
 				if stat == '% Passes certos':
 					passe_certo = df_stat_campeonato.loc[df_stat_campeonato['nome_estatistica'] == 'Passe Certo', 'Total_Estatistica'].values[0]
