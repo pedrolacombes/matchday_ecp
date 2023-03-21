@@ -356,7 +356,7 @@ if select_mode == 'Um jogador':
 			numero_jogos = len(lista_partidas_selecionaveis)
 
 			for stat in stats:
-				if stat != '% Passes certos' or stat!='% Duelos no chão ganhos' or stat!='% Duelos aéreos ganhos':
+				if stat != '% Passes certos' and stat!='% Duelos no chão ganhos' and stat!='% Duelos aéreos ganhos':
 					stat_valor = df_stat_campeonato.loc[df_stat_campeonato['nome_estatistica'] == stat, 'Total_Estatistica'].values[0]
 				if stat == '% Passes certos':
 					passe_certo = df_stat_campeonato.loc[df_stat_campeonato['nome_estatistica'] == 'Passe Certo', 'Total_Estatistica'].values[0]
@@ -379,7 +379,7 @@ if select_mode == 'Um jogador':
 						stat_valor = duelo_aereo_ganho / duelo_aereo
 					else:
 						stat_valor = 0				
-				if stat != '% Passes certos' or stat!='% Duelos no chão ganhos' or stat!='% Duelos aéreos ganhos':
+				if stat != '% Passes certos' and stat!='% Duelos no chão ganhos' and stat!='% Duelos aéreos ganhos':
 					stat_valor = stat_valor / numero_jogos
 				ax.text(x=0.25, y=linha, s=stat+' por partida', va='center', ha='left')
 				if stat == '% Passes certos' or stat=='% Duelos no chão ganhos' or stat=='% Duelos aéreos ganhos':
