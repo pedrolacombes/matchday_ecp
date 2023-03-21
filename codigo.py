@@ -659,6 +659,7 @@ if select_mode == 'Um jogador':
 		# puxando lista com index dos videos selecionados
 			lista_id_videos_selecionados = df_videos_selecionados.Index_Video.unique()
 			lista_id_videos_selecionados = lista_id_videos_selecionados.tolist()
+			st.write(lista_id_videos_selecionados)
 
 		# puxando videos selecionados e fazendo upload online
 			for video in lista_id_videos_selecionados:
