@@ -646,10 +646,12 @@ if select_mode == 'Um jogador':
 		# criando lista única de ids de partidas selecionadas
 			lista_id_partidas_selecionadas = partidas_selecionadas_videos.id_partida.unique()
 			lista_id_partidas_selecionadas = lista_id_partidas_selecionadas.tolist()
+			lista_id_partidas_selecionadas
 
 		# puxando o id dos videos de partidas e estatisticas selecionadas
 
 			df_videos_selecionados = pd.DataFrame()
+			my_df_video
 
 			for partida_selecionada in lista_id_partidas_selecionadas:
 					for stat_selecionada in option_stat_video:
