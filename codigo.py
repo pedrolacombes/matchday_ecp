@@ -265,7 +265,8 @@ if select_mode == 'Um jogador':
 			lista_selecao_partidas = st.selectbox('Selecione uma partida', lista_partidas_selecionaveis)
 			
 			# Filtrando df_final para a partida selecionada
-			df_stat_partida = df_final[(df_final['Nome_Completo_Partida'] == lista_selecao_partidas) & (df_final['Nome_Jogador'] == select_player)]
+			df_stat_partida = df_final[df_final['Nome_Completo_Partida'] == lista_selecao_partidas]
+			df_stat_partida = df_stat_partida[df_stat_partida['Nome_Jogador'] == select_player]
 			
 			#Definindo lista de estatisticas em ordem
 			stats = ['Gols + Assistências', 'Gol', 'Assistência', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Toque', 'Passe Certo', '% Passes certos', 
@@ -295,7 +296,7 @@ if select_mode == 'Um jogador':
 			# loop para preencher a tabela chamando as estatísticas
 
 			for stat in stats:
-				stat_valor = df_stat_partida[df_stat_partida['nome_estatistica'] == stat].values[0]
+				stat_valor = df_stat_partida.loc[df_stat_partida['nome_estatistica'] == stat, 'Total_Estatistica'].values[0]
 				ax.text(x=0.25, y=linha, s=stat, va='center', ha='left')
 				ax.text(x=2.25, y=linha, s=stat_valor, ha='right')
 				linha = linha - 1
