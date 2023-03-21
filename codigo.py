@@ -591,16 +591,6 @@ if select_mode == 'Um jogador':
 			st.pyplot(fig)
 
 	with tab1:
-		# Puxando o arquivo com a base de videos
-		sheet_id = '1iJMBXj_sbSowhu5sZT3pCLRnSRbydgjbxg-PlEAoZvc'
-		sheet_name = 'Videos'
-		url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
-		data_videos = pd.read_csv(url)
-		data_videos = data_videos[data_videos['Nome_Jogador'] == select_player]
-
-		# Convertendo base de videos para dataframe
-
-		my_df_video = pd.DataFrame(data_videos)
 
 		# Criar lista com lista única das partidas
 		Partidas = my_df.Index_Partida.unique()
