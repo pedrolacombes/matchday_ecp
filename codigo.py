@@ -296,7 +296,7 @@ if select_mode == 'Um jogador':
 			# loop para preencher a tabela chamando as estatísticas
 
 			for stat in stats:
-				stat_valor = df_stat_partida.loc[df_stat_partida['nome_estatistica'] == stat, 'Total_Estatistica']
+				stat_valor = df_stat_partida.loc[df_stat_partida['nome_estatistica'] == stat, 'Total_Estatistica'].values[0]
 				st.write(stat_valor)
 				ax.text(x=0.25, y=linha, s=stat, va='center', ha='left')
 				ax.text(x=2.25, y=linha, s=stat_valor, ha='right')
