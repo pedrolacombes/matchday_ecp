@@ -357,10 +357,8 @@ if select_mode == 'Um jogador':
 			numero_jogos = len(lista_partidas_selecionaveis)
 
 			for stat in stats:
-				st.write(stat)
 				if stat != '% Passes certos' and stat!='% Duelos no chão ganhos' and stat!='% Duelos aéreos ganhos':
-					stat_valor = df_stat_campeonato.loc[df_stat_campeonato['nome_estatistica'] == 'Passe', 'Total_Estatistica'].values[0]
-					st.write(stat_valor)
+					stat_valor = df_stat_campeonato.loc[df_stat_campeonato['nome_estatistica'] == stat, 'Total_Estatistica'].values[0]
 				if stat == '% Passes certos':
 					passe_certo = df_stat_campeonato.loc[df_stat_campeonato['nome_estatistica'] == 'Passe Certo', 'Total_Estatistica'].values[0]
 					passe = df_stat_campeonato.loc[df_stat_campeonato['nome_estatistica'] == 'Passe', 'Total_Estatistica'].values[0]
