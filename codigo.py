@@ -36,8 +36,6 @@ url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&s
 data_videos = pd.read_csv(url)
 my_df_video = pd.DataFrame(data_videos)
 
-my_df_video
-
 
 
 ## Sidebar inicial com seleção do modo do site
@@ -634,17 +632,14 @@ if select_mode == 'Um jogador':
 					partida_selecionada_videos_i = pd.DataFrame(
 							df_visitantes.loc[df_visitantes['nome_visitante'] == partida_selecionada])
 					partidas_selecionadas_videos = partidas_selecionadas_videos.append(partida_selecionada_videos_i, ignore_index=True)
-			partidas_selecionadas_videos
 
 		# criando lista única de ids de partidas selecionadas
 			lista_id_partidas_selecionadas = partidas_selecionadas_videos.id_partida.unique()
 			lista_id_partidas_selecionadas = lista_id_partidas_selecionadas.tolist()
-			lista_id_partidas_selecionadas
 
 		# puxando o id dos videos de partidas e estatisticas selecionadas
 
 			df_videos_selecionados = pd.DataFrame()
-			my_df_video
 
 			for partida_selecionada in lista_id_partidas_selecionadas:
 					for stat_selecionada in option_stat_video:
@@ -655,7 +650,6 @@ if select_mode == 'Um jogador':
 		# puxando lista com index dos videos selecionados
 			lista_id_videos_selecionados = df_videos_selecionados.Index_Video.unique()
 			lista_id_videos_selecionados = lista_id_videos_selecionados.tolist()
-			st.write(lista_id_videos_selecionados)
 
 		# puxando videos selecionados e fazendo upload online
 			for video in lista_id_videos_selecionados:
