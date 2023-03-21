@@ -1058,7 +1058,7 @@ if select_mode == 'Um jogador':
 		for jogador in lista_jogadores:
 
 			data_total = df_geral[df_geral['Jogador']==jogador]
-			lista_partidas = df_geral.Index_Partida.unique()
+			lista_partidas = data_total.Index_Partida.unique()
 			lista_partidas = lista_partidas.tolist()
 			numero_jogos = len(lista_partidas)
 
@@ -1072,7 +1072,7 @@ if select_mode == 'Um jogador':
 		for jogador in lista_jogadores:
 
 			data_total = df_geral[df_geral['Jogador']==jogador]
-			lista_partidas = df_geral.Index_Partida.unique()
+			lista_partidas = data_total.Index_Partida.unique()
 			lista_partidas = lista_partidas.tolist()
 			numero_jogos = len(lista_partidas)
 
@@ -1093,7 +1093,7 @@ if select_mode == 'Um jogador':
 		for jogador in lista_jogadores:
 
 			data_total = df_geral[df_geral['Jogador']==jogador]
-			lista_partidas = df_geral.Index_Partida.unique()
+			lista_partidas = data_total.Index_Partida.unique()
 			lista_partidas = lista_partidas.tolist()
 			numero_jogos = len(lista_partidas)
 
@@ -1114,7 +1114,7 @@ if select_mode == 'Um jogador':
 		for jogador in lista_jogadores:
 
 			data_total = df_geral[df_geral['Jogador']==jogador]
-			lista_partidas = df_geral.Index_Partida.unique()
+			lista_partidas = data_total.Index_Partida.unique()
 			lista_partidas = lista_partidas.tolist()
 			numero_jogos = len(lista_partidas)
 
