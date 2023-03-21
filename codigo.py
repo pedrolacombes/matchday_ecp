@@ -235,16 +235,8 @@ if select_mode == 'Um jogador':
 	lista_times = lista_times.tolist()
 	select_team = st.sidebar.selectbox('Selecione um time', lista_times)
 	
-	#cache para my_df_team
-	@st.cache_data
-	def transform_my_df_team (data, select_team): 
-		
-		# Gerando base my_df apenas com o time selecionado
-		my_df_team = data[data['Time_Jogador'] == select_team]
-		
-		return my_df_team
-	
-	my_df_team = transform_my_df_team (data, select_team)
+	# Gerando base my_df apenas com o time selecionado
+	my_df_team = data[data['Time_Jogador'] == select_team]
 	
 	# Adicionando sidebar
 	lista_jogadores = my_df_team.Nome_Jogador.unique()
