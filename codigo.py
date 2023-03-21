@@ -327,6 +327,7 @@ if select_mode == 'Um jogador':
 			
 			# Grupby para total das estatisticas do campeonato
 			df_stat_campeonato = df_final[df_final['Nome_Campeonato'] == campeonato_escolhido]
+			df_stat_campeonato = df_final[df_final['Nome_Jogador'] == select_player]			
 			df_stat_campeonato = df_stat_campeonato.groupby(['Nome_Jogador','nome_estatistica'])['Total_Estatistica'].sum()
 			df_stat_campeonato
 
