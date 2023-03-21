@@ -641,6 +641,7 @@ if select_mode == 'Um jogador':
 					partida_selecionada_videos_i = pd.DataFrame(
 							df_visitantes.loc[df_visitantes['nome_visitante'] == partida_selecionada])
 					partidas_selecionadas_videos = partidas_selecionadas_videos.append(partida_selecionada_videos_i, ignore_index=True)
+			partidas_selecionadas_videos
 
 		# criando lista única de ids de partidas selecionadas
 			lista_id_partidas_selecionadas = partidas_selecionadas_videos.id_partida.unique()
