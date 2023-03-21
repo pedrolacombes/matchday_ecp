@@ -326,7 +326,9 @@ if select_mode == 'Um jogador':
 			campeonato_escolhido = st.selectbox('Selecione um campeonato', ['Society ECP 2023'])
 			
 			# Grupby para total das estatisticas do campeonato
-			df_stat_campeonato = df_stat_partida.groupby(['Nome_Jogador','nome_estatistica'])['Total_Estatistica'].sum()
+			df_stat_campeonato = df_final[df_final['Nome_Campeonato'] == campeonato_escolhido]
+			df_stat_campeonato = df_stat_campeonato.groupby(['Nome_Jogador','nome_estatistica'])['Total_Estatistica'].sum()
+			df_stat_campeonato
 
 			# Criando figura
 
