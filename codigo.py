@@ -463,6 +463,7 @@ if select_mode == 'Um jogador':
 
 			contagem_passe_certo = 0
 			contagem_passe_errado = 0
+			my_df
 
 			for i in range(len(my_df)):
 
