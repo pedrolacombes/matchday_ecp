@@ -21,30 +21,21 @@ st.set_page_config(page_title=None, page_icon=None, layout="centered", initial_s
 
 # Puxando o arquivo com a base geral
 
-@st.cache_data
-def load_geral ():
-	sheet_id = '1iJMBXj_sbSowhu5sZT3pCLRnSRbydgjbxg-PlEAoZvc'
-	sheet_name = 'Geral'
-	url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
-	data = pd.read_csv(url)
-	data = data[data['Index_Partida'] > 0]
-	data = pd.DataFrame(data)
-	return data
-
-data = load_geral()
+sheet_id = '1iJMBXj_sbSowhu5sZT3pCLRnSRbydgjbxg-PlEAoZvc'
+sheet_name = 'Geral'
+url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
+data = pd.read_csv(url)
+data = data[data['Index_Partida'] > 0]
+data = pd.DataFrame(data)
 
 ## Puxando o arquivo com a base de videos
 
-@st.cache_data
-def load_data_videos():
-	sheet_id = '1iJMBXj_sbSowhu5sZT3pCLRnSRbydgjbxg-PlEAoZvc'
-	sheet_name = 'Videos'
-	url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
-	data_videos = pd.read_csv(url)
-	my_df_video = pd.DataFrame(data_videos)
-	return data_videos
-	
-data_videos = load_data_videos()
+sheet_id = '1iJMBXj_sbSowhu5sZT3pCLRnSRbydgjbxg-PlEAoZvc'
+sheet_name = 'Videos'
+url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
+data_videos = pd.read_csv(url)
+my_df_video = pd.DataFrame(data_videos)
+
 
 
 ## Sidebar inicial com seleção do modo do site
