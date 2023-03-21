@@ -297,9 +297,11 @@ if select_mode == 'Um jogador':
 
 			for stat in stats:
 				stat_valor = df_stat_partida.loc[df_stat_partida['nome_estatistica'] == stat, 'Total_Estatistica'].values[0]
-				st.write(stat_valor)
 				ax.text(x=0.25, y=linha, s=stat, va='center', ha='left')
-				ax.text(x=2.25, y=linha, s=stat_valor, ha='right')
+				if stat == '% Passes certos' or stat=='% Duelos no chão ganhos' or stat=='% Duelos aéreos ganhos':
+					ax.text(x=2.25, y=linha, s='{:.1%}'.format(stat_valor), ha='right')
+				else:
+					ax.text(x=2.25, y=linha, s=stat_valor, ha='right')
 				linha = linha - 1
 
 			# colocando cabeçalho
