@@ -270,7 +270,7 @@ if select_mode == 'Um jogador':
 			st.dataframe(df_stat_partida)
 			
 			#Definindo lista de estatisticas em ordem
-			stats = ['Gols+Assistencias', 'Gol', 'Assistencia', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Toques', 'Passe Certo', '% Passes certos', 
+			stats = ['Gols + Assistencias', 'Gol', 'Assistencia', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Toques', 'Passe Certo', '% Passes certos', 
 				 'Perda de posse', 'Duelo no Chão Ganho', '% Duelos no chão vencidos', 'Duelo Aéreo Ganho','% Duelos aéreos ganhos', 'Desarme', 'Corte', 'Bloqueio de chute']
 
 			# Criando figura
