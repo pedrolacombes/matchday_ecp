@@ -235,18 +235,25 @@ if select_mode == 'Um jogador':
 	lista_times = lista_times.tolist()
 	select_team = st.sidebar.selectbox('Selecione um time', lista_times)
 
-	# Gerando base my_df apenas com o time selecionado
-	my_df = data[data['Time_Jogador'] == select_team]
+	## Cache para my_df
+	@st.cache_data
+	def transform_my_df(select_team, select_player):
+	
+		# Gerando base my_df apenas com o time selecionado
+		my_df = data[data['Time_Jogador'] == select_team]
 
-	# Adicionando sidebar
-	lista_jogadores = my_df.Nome_Jogador.unique()
-	lista_jogadores = lista_jogadores.tolist()
-	select_player = st.sidebar.selectbox('Selecione um jogador', lista_jogadores)
-	st.sidebar.write('Disponível agora video de melhores momentos e estatisticas de cada jogo. Para ver, selecionar *Uma Partida* na primeira caixinha')
+		# Adicionando sidebar
+		lista_jogadores = my_df.Nome_Jogador.unique()
+		lista_jogadores = lista_jogadores.tolist()
+		select_player = st.sidebar.selectbox('Selecione um jogador', lista_jogadores)
+		st.sidebar.write('Disponível agora video de melhores momentos e estatisticas de cada jogo. Para ver, selecionar *Uma Partida* na primeira caixinha')
 
-	# Gerando my_df apenas para jogador selecionado
-	my_df = my_df[my_df['Nome_Jogador'] == select_player]
-	my_df.reset_index(inplace = True)
+		# Gerando my_df apenas para jogador selecionado
+		my_df = my_df[my_df['Nome_Jogador'] == select_player]
+		my_df.reset_index(inplace = True)
+		return my_df
+	
+	my_df = transform_my_df(select_team, select_player)
 
 	# declarando as 4 macro abas do aplicativo
 
@@ -464,7 +471,6 @@ if select_mode == 'Um jogador':
 
 			contagem_passe_certo = 0
 			contagem_passe_errado = 0
-			my_df
 
 			for i in range(len(my_df)):
 
