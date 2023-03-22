@@ -15,6 +15,10 @@ import matplotlib as mat
 import streamlit as st
 import cv2
 import moviepy.editor as moviepy
+import pathlib
+from bs4 import BeautifulSoup
+import logging
+import shutil
 
 # conectando ao google analytics
 
