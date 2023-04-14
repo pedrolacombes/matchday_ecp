@@ -348,7 +348,7 @@ if select_mode == 'Um jogador':
 
 			# loop para preencher a tabela chamando as estatísticas
 
-			numero_jogos = df_stat_campeonato.Nome_Partida_Completo.unique()
+			numero_jogos = df_stat_campeonato.Nome_Completo_Partida.unique()
 			numero_jogos = numero_jogos.tolist()
 			numero_jogos = len(numero_jogos)
 
