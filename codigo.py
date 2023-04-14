@@ -317,8 +317,6 @@ if select_mode == 'Um jogador':
 	# montando pagina do tabelao de estatistica
 
 	with tab3:
-
-		with tab10:
 			
 			# Grupby para total das estatisticas do campeonato
 			df_stat_campeonato = df_final[df_final['Nome_Jogador'] == select_player]
