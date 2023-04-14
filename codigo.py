@@ -321,7 +321,7 @@ if select_mode == 'Um jogador':
 			# Grupby para total das estatisticas do campeonato
 			df_stat_campeonato = df_final[df_final['Nome_Jogador'] == select_player]
 			if select_partida != 'Todas':
-				df_stat_campeonato = df_stat_campeonato[df_stat_campeonato['Nome_Partida_Completo'] == select_partida]
+				df_stat_campeonato = df_stat_campeonato[df_stat_campeonato['Nome_Completo_Partida'] == select_partida]
 				
 			# Definindo numero de jogos	
 			numero_jogos = df_stat_campeonato.Nome_Completo_Partida.unique()
