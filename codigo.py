@@ -76,6 +76,13 @@ url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&s
 data_videos = pd.read_csv(url)
 my_df_video = pd.DataFrame(data_videos)
 
+## Puxando o arquivo com a base de acessos
+
+sheet_id = '1iJMBXj_sbSowhu5sZT3pCLRnSRbydgjbxg-PlEAoZvc'
+sheet_name = 'Acesso'
+url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
+data_acesso = pd.read_csv(url)
+df_acesso = pd.DataFrame(data_videos)
 
 
 ## Sidebar inicial com seleção do modo do site
@@ -261,7 +268,7 @@ df_final = transform_df_final(data)
 # If condition para direcionar para a pagina jogador
 if select_mode == 'Um jogador':
 				   
-	# Regerando o sidebar
+	# Adicionando lista de times ao sidebar
 	lista_times = data.Time_Jogador.unique()
 	lista_times = lista_times.tolist()
 	select_team = st.sidebar.selectbox('Selecione um time', lista_times)
@@ -269,10 +276,17 @@ if select_mode == 'Um jogador':
 	# Gerando base my_df apenas com o time selecionado
 	my_df_team = data[data['Time_Jogador'] == select_team]
 	
-	# Adicionando sidebar
+	# Adicionando lista de jogadores ao sidebar
 	lista_jogadores = my_df_team.Nome_Jogador.unique()
 	lista_jogadores = lista_jogadores.tolist()
 	select_player = st.sidebar.selectbox('Selecione um jogador', lista_jogadores)
+	
+	# Adicionando lista de partidas ao sidebar
+	df_acesso = df_acesso[df_acesso['Nome_Jogador'] == select_player]
+	lista_partidas = df_acesso.Nome_Completo_Partida.unique()
+	lista_partidas = lista_partidas.tolist()
+	select_partida = st.sidebar.selectbox('Selecione uma partida', lista_partidas)
+	
 	st.sidebar.write('Disponível agora video de melhores momentos e estatisticas de cada jogo. Para ver, selecionar *Uma Partida* na primeira caixinha')
 	st.sidebar.write('Pessoal, peço a ajuda de vocês para responder uma pesquisa rápida que vai me ajudar muito na construção do aplicativo! Segue o link: https://forms.gle/CDJiu5Csdq8xSZKH8')
 
