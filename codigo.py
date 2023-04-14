@@ -83,7 +83,7 @@ sheet_name = 'Acesso'
 url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
 data_acesso = pd.read_csv(url)
 df_acesso = pd.DataFrame(data_acesso)
-
+df_acesso
 
 ## Sidebar inicial com seleção do modo do site
 select_mode = st.sidebar.selectbox('Eu quero ver os dados e videos de:', ['Um jogador', 'Uma partida'])
@@ -282,7 +282,6 @@ if select_mode == 'Um jogador':
 	select_player = st.sidebar.selectbox('Selecione um jogador', lista_jogadores)
 	
 	# Adicionando lista de partidas ao sidebar
-	df_acesso
 	df_acesso = df_acesso[df_acesso['Nome_Jogador'] == select_player]
 	lista_partidas = df_acesso.Nome_Completo_Partida.unique()
 	lista_partidas = lista_partidas.tolist()
