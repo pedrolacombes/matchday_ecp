@@ -608,7 +608,7 @@ if select_mode == 'Um jogador':
 			for url in lista_videos_partidas_selecionadas:
 			# Create a VideoCapture object
 				if url == 'Null':
-					st.write(f'Não há vídeos de {estatistica} para a partida vs. {visitante_data}')
+					st.write(f'Não há vídeos de estatística selecionada para as partidas selecionadas')
 				else:
 					st.video(url)
 					
