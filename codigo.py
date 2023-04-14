@@ -588,6 +588,7 @@ if select_mode == 'Um jogador':
 		if select_partida != 'Todos':
 			my_df_video = my_df_video[my_df_video['Nome_Completo_Partida'] == select_partida]
 
+		my_df_video
 		# Definindo filtros para stats e partidas
 		filtros_stats_videos = ['Todos os lances','Gols', 'Assistências', 'Finalizações', 'Duelos', 'Erros ofensivos', 'Recuperações de bola e cortes']
 		option_stat_video = st.selectbox('Selecione uma estatística', filtros_stats_videos)
