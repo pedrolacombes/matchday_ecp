@@ -333,6 +333,10 @@ if select_mode == 'Um jogador':
 			df_stat_campeonato = pd.DataFrame(df_stat_campeonato)
 			df_stat_campeonato.reset_index(inplace = True)
 
+			# Definindo lista de estatisticas
+			stats = ['Gols + Assistencias', 'Gol', 'Assistencia', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Toques', 'Passe Certo', '% Passes certos', 
+				 'Perda de posse', 'Duelo no Chão Ganho', '% Duelos no chão ganhos', 'Duelo Aéreo Ganho','% Duelos aéreos ganhos', 'Desarme', 'Corte', 'Bloqueio de chute']
+			
 			# Criando figura
 
 			fig, ax = plt.subplots(figsize=(8,24))
@@ -354,8 +358,6 @@ if select_mode == 'Um jogador':
 			linha = 24
 
 			# loop para preencher a tabela chamando as estatísticas
-
-
 
 			for stat in stats:
 				if stat != '% Passes certos' and stat!='% Duelos no chão ganhos' and stat!='% Duelos aéreos ganhos':
