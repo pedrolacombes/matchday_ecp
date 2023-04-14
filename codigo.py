@@ -455,8 +455,7 @@ if select_mode == 'Um jogador':
 			ax.axis('off')
 
 		# Criando caixa com estatísticas que podem ser selecionadas para os mapas
-			lista_stats_mapa = ['Passes', 'Finalizacoes', 'Duelos', 'Desarmes', 'Perdas de Posse', 'Faltas Sofridas',
-													'Faltas Cometidas']
+			lista_stats_mapa = ['Passes', 'Finalizacoes', 'Duelos', 'Desarmes', 'Perdas de Posse']
 			option_stat_mapa = st.selectbox('Selecione uma estatística', lista_stats_mapa)
 
 		# Desenhando eventos de opção selecionada
@@ -496,14 +495,6 @@ if select_mode == 'Um jogador':
 							ax.text(1,25.75,'Finalização bloqueada',fontsize=6)
 							ax.text(1,26.75,'Finalização no gol', fontsize=6)
 							ax.text(1,27.75,'Finalização para fora', fontsize=6)
-
-					if option_stat_mapa == 'Faltas Cometidas':
-							if my_df['Nome_Ato'][i] == 'Falta cometida':
-									plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "x", color="red")
-
-					if option_stat_mapa == 'Faltas Sofridas':
-							if my_df['Nome_Ato'][i] == 'Falta sofrida':
-									plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "x", color="blue")
 
 					if option_stat_mapa == 'Perdas de Posse':
 							if my_df['Nome_Ato'][i] == 'Perda de posse':
