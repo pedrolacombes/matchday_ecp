@@ -90,7 +90,7 @@ select_mode = st.sidebar.selectbox('Eu quero ver os dados e videos de:', ['Um jo
 
 ## Definindo a base df_geral que converte a base input em algo mais estruturado
 
-@st.cache_data
+###@st.cache_data
 def transform_df_final(data):
 
 	# Declarando lista de partidas
@@ -291,7 +291,7 @@ if select_mode == 'Um jogador':
 	st.sidebar.write('Pessoal, peço a ajuda de vocês para responder uma pesquisa rápida que vai me ajudar muito na construção do aplicativo! Segue o link: https://forms.gle/CDJiu5Csdq8xSZKH8')
 
 	## Cache para my_df
-	@st.cache_data
+###	@st.cache_data
 	def transform_my_df(my_df_team, select_player):
 	
 
