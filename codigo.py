@@ -292,100 +292,38 @@ if select_mode == 'Um jogador':
 	st.sidebar.write('Disponível agora video de melhores momentos e estatisticas de cada jogo. Para ver, selecionar *Uma Partida* na primeira caixinha')
 	st.sidebar.write('Pessoal, peço a ajuda de vocês para responder uma pesquisa rápida que vai me ajudar muito na construção do aplicativo! Segue o link: https://forms.gle/CDJiu5Csdq8xSZKH8')
 
-	## Cache para my_df
+	## Cache para my_df com jogador e partida selecionada
 	@st.cache_data
-	def transform_my_df(my_df_team, select_player):
+	def transform_my_df(my_df_team, select_player, select_partida):
 	
 
 
 		# Gerando my_df apenas para jogador selecionado
 		my_df = my_df_team[my_df_team['Nome_Jogador'] == select_player]
 		my_df.reset_index(inplace = True)
+		
+		if select_partida != 'Todas':
+			my_df = my_df[my_df['Nome_Completo_Partida'] == select_partida]
+			my_df.reset_index(inplace=True)
+		
 		return my_df
 	
-	my_df = transform_my_df(my_df_team, select_player)
+	my_df = transform_my_df(my_df_team, select_player,select_partida)
 
 	# declarando as 4 macro abas do aplicativo
 
 	tab1, tab2, tab3, tab6= st.tabs(['Videos','Mapas','Stats', 'Time'])
 
-	# montando pagina do tabelao
+	# montando pagina do tabelao de estatistica
 
 	with tab3:
 
-		tab10, tab11 = st.tabs(['Resumo', 'Partidas'])
-
-		with tab11:
-			
-			# Definindo lista de partidas que podem ser selecionadas
-			lista_partidas_selecionaveis = my_df.Nome_Completo_Partida.unique()
-			lista_partidas_selecionaveis = lista_partidas_selecionaveis.tolist()
-			lista_selecao_partidas = st.selectbox('Selecione uma partida', lista_partidas_selecionaveis)
-			
-			# Filtrando df_final para a partida selecionada
-			df_stat_partida = df_final[df_final['Nome_Completo_Partida'] == lista_selecao_partidas]
-			df_stat_partida = df_stat_partida[df_stat_partida['Nome_Jogador'] == select_player]
-			
-			#Definindo lista de estatisticas em ordem
-			stats = ['Gols + Assistencias', 'Gol', 'Assistencia', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Toques', 'Passe Certo', '% Passes certos', 
-				 'Perda de posse', 'Duelo no Chão Ganho', '% Duelos no chão ganhos', 'Duelo Aéreo Ganho','% Duelos aéreos ganhos', 'Desarme', 'Corte', 'Bloqueio de chute']
-
-			# Criando figura
-
-			fig, ax = plt.subplots(figsize=(8,24))
-
-			# Definindo número de linhas e colunas
-
-			cols = 3
-			rows = 24
-
-			# Criar coordenadas com base no número de linhas e colunas
-
-			# Adicionando bordas
-
-			ax.set_ylim(-1, rows + 1)
-			ax.set_xlim(0.25, cols-0.5)
-
-			# setando a linha inicial
-
-			linha = 24
-
-			# loop para preencher a tabela chamando as estatísticas
-
-			for stat in stats:
-				stat_valor = df_stat_partida.loc[df_stat_partida['nome_estatistica'] == stat, 'Total_Estatistica'].values[0]
-				ax.text(x=0.25, y=linha, s=stat, va='center', ha='left')
-				if stat == '% Passes certos' or stat=='% Duelos no chão ganhos' or stat=='% Duelos aéreos ganhos':
-					ax.text(x=2.25, y=linha, s='{:.1%}'.format(stat_valor), ha='right')
-				else:
-					ax.text(x=2.25, y=linha, s=stat_valor, ha='right')
-				linha = linha - 1
-
-			# colocando cabeçalho
-			ax.text(0.25, 24.75, 'Stat', weight='bold', ha='left')
-			ax.text(2.25, 24.75, 'Valor', weight='bold', ha='right')
-			ax.plot([0.25, cols-0.62], [24.5, 24.5], lw='.5', c='black')
-
-			ax.plot([0.25, cols-0.62], [17.5, 17.5], lw='.2', c='gray')
-			ax.plot([0.25, cols-0.62], [13.5, 13.5], lw='.2', c='gray')
-			ax.plot([0.25, cols-0.62], [6.5, 6.5], lw='.2', c='gray')
-
-			# tirando eixos
-			ax.axis('off')
-
-			fig
-
-		# Criando aba por campeonato
-
 		with tab10:
-
-			# Criando selectbox para escolher campeonato
-
-			campeonato_escolhido = st.selectbox('Selecione um campeonato', ['Society ECP 2023'])
 			
 			# Grupby para total das estatisticas do campeonato
-			df_stat_campeonato = df_final[df_final['Nome_Campeonato'] == campeonato_escolhido]
-			df_stat_campeonato = df_final[df_final['Nome_Jogador'] == select_player]			
+			df_stat_campeonato = df_final[df_final['Nome_Jogador'] == select_player]
+			if select_partida != 'Todas':
+				df_stat_campeonato = df_stat_campeonato[df_stat_campeonato['Nome_Partida_Completo'] == select_partida]
 			df_stat_campeonato = df_stat_campeonato.groupby(['Nome_Jogador','nome_estatistica'])['Total_Estatistica'].sum()
 			df_stat_campeonato = pd.DataFrame(df_stat_campeonato)
 			df_stat_campeonato.reset_index(inplace = True)
