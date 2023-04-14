@@ -603,15 +603,15 @@ if select_mode == 'Um jogador':
 		# criando lista única de URLs dos videos selecionados
 			lista_videos_partidas_selecionadas = my_df_video.Link_youtube.unique()
 			lista_videos_partidas_selecionadas = lista_videos_partidas_selecionadas.tolist()
-			lista_videos_partidas_selecionadas
 
 		# puxando videos selecionados e fazendo upload online
-			for URL in lista_videos_partidas_selecionadas:
+			for url in lista_videos_partidas_selecionadas:
 			# Create a VideoCapture object
 				if url == 'Null':
 					st.write(f'Não há vídeos de {estatistica} para a partida vs. {visitante_data}')
 				else:
 					st.video(url)
+					
 
 	with tab6:
 
