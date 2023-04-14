@@ -584,6 +584,7 @@ if select_mode == 'Um jogador':
 	with tab1:
 
 		# Filtrando my_df_video para jogador e partida selecionados
+		my_df_video
 		my_df_video = my_df_video[my_df_video['Nome_Jogador'] == select_player]
 		if select_partida != 'Todos':
 			my_df_video = my_df_video[my_df_video['Nome_Completo_Partida'] == select_partida]
