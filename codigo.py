@@ -525,6 +525,7 @@ if select_mode == 'Um jogador':
 			st.pyplot(fig)
 
 			if option_stat_mapa == 'Passes':
+				if contagem_passe_certo + contagem_passe_errado > 0:
 					st.write(f"Ao todo foram {contagem_passe_certo + contagem_passe_errado} passes com ganho de mais de {distancia} metros de campo")
 					st.write(f"Desse total, {contagem_passe_certo / (contagem_passe_certo + contagem_passe_errado):.0%} foram passes certos")
 
