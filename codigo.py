@@ -348,7 +348,9 @@ if select_mode == 'Um jogador':
 
 			# loop para preencher a tabela chamando as estatísticas
 
-			numero_jogos = len(lista_partidas_selecionaveis)
+			numero_jogos = df_stat_campeonato.Nome_Partida_Completo.unique()
+			numero_jogos = numero_jogos.tolist()
+			numero_jogos = len(numero_jogos)
 
 			for stat in stats:
 				if stat != '% Passes certos' and stat!='% Duelos no chão ganhos' and stat!='% Duelos aéreos ganhos':
