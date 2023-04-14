@@ -327,7 +327,6 @@ if select_mode == 'Um jogador':
 			numero_jogos = my_df.Nome_Completo_Partida.unique()
 			numero_jogos = numero_jogos.tolist()
 			numero_jogos = len(numero_jogos)
-			numero_jogos
 			
 			# Agrupando totais da tabela
 			df_stat_campeonato = df_stat_campeonato.groupby(['Nome_Jogador','nome_estatistica'])['Total_Estatistica'].sum()
@@ -336,7 +335,7 @@ if select_mode == 'Um jogador':
 
 			# Definindo lista de estatisticas
 			stats = ['Gols + Assistencias', 'Gol', 'Assistencia', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Toques', 'Passe Certo', '% Passes certos', 
-				 'Perda de posse', 'Duelo no Chão Ganho', '% Duelos no chão ganhos', 'Duelo Aéreo Ganho','% Duelos aéreos ganhos', 'Desarme', 'Corte', 'Bloqueio de chute']
+				 'Perda de posse', 'Duelo no Chão Ganho', '% Duelos no chão ganhos', 'Desarme', 'Corte', 'Bloqueio de chute']
 			
 			# Criando figura
 
