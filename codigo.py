@@ -584,12 +584,10 @@ if select_mode == 'Um jogador':
 	with tab1:
 
 		# Filtrando my_df_video para jogador e partida selecionados
-		my_df_video
 		my_df_video = my_df_video[my_df_video['Nome_Jogador'] == select_player]
-		if select_partida != 'Todos':
+		if select_partida != 'Todas':
 			my_df_video = my_df_video[my_df_video['Nome_Completo_Partida'] == select_partida]
 
-		my_df_video
 		# Definindo filtros para stats e partidas
 		filtros_stats_videos = ['Todos os lances','Gols', 'Assistências', 'Finalizações', 'Duelos', 'Erros ofensivos', 'Recuperações de bola e cortes']
 		option_stat_video = st.selectbox('Selecione uma estatística', filtros_stats_videos)
@@ -609,9 +607,9 @@ if select_mode == 'Um jogador':
 
 		# puxando videos selecionados e fazendo upload online
 			for video in lista_videos_partidas_selecionadas:
-					url = data_videos.loc[video-1,'Link_youtube']
-					estatistica = data_videos.loc[video-1,'Nome_Stat_Video']
-					visitante_data = data_videos.loc[video-1,'Visitante_Data']
+					url = my_df_video.loc[video-1,'Link_youtube']
+					estatistica = my_df_video.loc[video-1,'Nome_Stat_Video']
+					visitante_data = my_df_video.loc[video-1,'Visitante_Data']
 			# Create a VideoCapture object
 					if url == 'Null':
 							st.write(f'Não há vídeos de {estatistica} para a partida vs. {visitante_data}')
