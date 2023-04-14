@@ -282,6 +282,7 @@ if select_mode == 'Um jogador':
 	select_player = st.sidebar.selectbox('Selecione um jogador', lista_jogadores)
 	
 	# Adicionando lista de partidas ao sidebar
+	df_acesso
 	df_acesso = df_acesso[df_acesso['Nome_Jogador'] == select_player]
 	lista_partidas = df_acesso.Nome_Completo_Partida.unique()
 	lista_partidas = lista_partidas.tolist()
