@@ -1004,11 +1004,11 @@ if select_mode == 'Um jogador':
 
 					# total column
 
-					ax.text(x=2.5, y=9-row, s=d['Total'], va='center', ha='right')
+					ax.text(x=2.5, y=9-row, s=round(d['Total'],1), va='center', ha='right')
 
 					# media column
 
-					ax.text(x=3.5, y=9-row, s=d['Media por Jogo'], va='center', ha='right')
+					ax.text(x=3.5, y=9-row, s=round(d['Media por Jogo'],1), va='center', ha='right')
 
 
 					# Add column headers
