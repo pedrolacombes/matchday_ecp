@@ -322,6 +322,13 @@ if select_mode == 'Um jogador':
 			df_stat_campeonato = df_final[df_final['Nome_Jogador'] == select_player]
 			if select_partida != 'Todas':
 				df_stat_campeonato = df_stat_campeonato[df_stat_campeonato['Nome_Partida_Completo'] == select_partida]
+				
+			# Definindo numero de jogos	
+			numero_jogos = df_stat_campeonato.Nome_Completo_Partida.unique()
+			numero_jogos = numero_jogos.tolist()
+			numero_jogos = len(numero_jogos)
+			
+			# Agrupando totais da tabela
 			df_stat_campeonato = df_stat_campeonato.groupby(['Nome_Jogador','nome_estatistica'])['Total_Estatistica'].sum()
 			df_stat_campeonato = pd.DataFrame(df_stat_campeonato)
 			df_stat_campeonato.reset_index(inplace = True)
@@ -348,9 +355,7 @@ if select_mode == 'Um jogador':
 
 			# loop para preencher a tabela chamando as estatísticas
 
-			numero_jogos = df_stat_campeonato.Nome_Completo_Partida.unique()
-			numero_jogos = numero_jogos.tolist()
-			numero_jogos = len(numero_jogos)
+
 
 			for stat in stats:
 				if stat != '% Passes certos' and stat!='% Duelos no chão ganhos' and stat!='% Duelos aéreos ganhos':
