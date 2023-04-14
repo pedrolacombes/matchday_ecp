@@ -600,6 +600,7 @@ if select_mode == 'Um jogador':
 		# criando lista única de ids de partidas selecionadas
 			lista_videos_partidas_selecionadas = my_df_video.Nome_Completo_Partida.unique()
 			lista_videos_partidas_selecionadas = lista_videos_partidas_selecionadas.tolist()
+			lista_videos_partidas_selecionadas
 
 		# puxando videos selecionados e fazendo upload online
 			for video in lista_videos_partidas_selecionadas:
