@@ -389,7 +389,7 @@ if select_mode == 'Um jogador':
 				if stat == '% Passes certos' or stat=='% Duelos no chão ganhos' or stat=='% Duelos aéreos ganhos':
 					ax.text(x=2.25, y=linha, s='{:.1%}'.format(stat_valor), ha='right')
 				else:
-					ax.text(x=2.25, y=linha, s='{:.1}'.format(stat_valor), ha='right')
+					ax.text(x=2.25, y=linha, s=round(stat_valor,1), ha='right')
 				linha = linha - 1
 
 			# colocando cabeçalho
