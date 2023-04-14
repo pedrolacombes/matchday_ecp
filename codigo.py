@@ -285,7 +285,8 @@ if select_mode == 'Um jogador':
 	lista_partidas = df_acesso.Nome_Completo_Partida.unique()
 	lista_partidas = lista_partidas.tolist()
 	lista_partidas_final = ['Todas']
-	lista_partidas_final.append(lista_partidas)
+	for partida in lista_partidas:
+		lista_partidas_final.append(lista_partidas[partida])
 	select_partida = st.sidebar.selectbox('Selecione uma partida', lista_partidas_final)
 	
 	st.sidebar.write('Disponível agora video de melhores momentos e estatisticas de cada jogo. Para ver, selecionar *Uma Partida* na primeira caixinha')
