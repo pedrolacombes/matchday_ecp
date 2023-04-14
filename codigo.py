@@ -591,6 +591,9 @@ if select_mode == 'Um jogador':
 		# Definindo filtros para stats e partidas
 		filtros_stats_videos = ['Todos os lances','Gols', 'Assistências', 'Finalizações', 'Duelos', 'Erros ofensivos', 'Recuperações de bola e cortes']
 		option_stat_video = st.selectbox('Selecione uma estatística', filtros_stats_videos)
+		
+		# Filtrando my_df_video para estatistica selecionada
+		my_df_video = my_df_video[my_df_video['Nome_Stat_Video'] == option_stat_video]
 
 		# Condicional para ver se filtros foram selecionados
 		if option_stat_video ==[]:
