@@ -324,7 +324,7 @@ if select_mode == 'Um jogador':
 				df_stat_campeonato = df_stat_campeonato[df_stat_campeonato['Nome_Completo_Partida'] == select_partida]
 				
 			# Definindo numero de jogos	
-			numero_jogos = df_stat_campeonato.Nome_Completo_Partida.unique()
+			numero_jogos = my_df.Nome_Completo_Partida.unique()
 			numero_jogos = numero_jogos.tolist()
 			numero_jogos = len(numero_jogos)
 			numero_jogos
