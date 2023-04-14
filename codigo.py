@@ -327,6 +327,7 @@ if select_mode == 'Um jogador':
 			numero_jogos = df_stat_campeonato.Nome_Completo_Partida.unique()
 			numero_jogos = numero_jogos.tolist()
 			numero_jogos = len(numero_jogos)
+			numero_jogos
 			
 			# Agrupando totais da tabela
 			df_stat_campeonato = df_stat_campeonato.groupby(['Nome_Jogador','nome_estatistica'])['Total_Estatistica'].sum()
