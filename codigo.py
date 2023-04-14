@@ -82,6 +82,7 @@ sheet_id = '1iJMBXj_sbSowhu5sZT3pCLRnSRbydgjbxg-PlEAoZvc'
 sheet_name = 'Acesso'
 url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
 data_acesso = pd.read_csv(url)
+data_acesso
 df_acesso = pd.DataFrame(data_acesso)
 df_acesso
 
