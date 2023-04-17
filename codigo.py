@@ -1108,6 +1108,7 @@ if select_mode == 'Uma partida':
 	lista_campeonatos = data.Nome_Campeonato.unique()
 	lista_campeonatos = lista_campeonatos.tolist()
 	select_campeonato = st.sidebar.selectbox('Selecione um time', lista_campeonatos)
+	data = data[data['Nome_Campeonato'] == select_campeonato]
 	lista_partidas = data.Nome_Completo_Partida.unique()
 	lista_partidas = lista_partidas.tolist()
 	select_partida = st.sidebar.selectbox('Selecione um time', lista_partidas)
