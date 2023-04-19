@@ -67,7 +67,6 @@ url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&s
 data = pd.read_csv(url)
 data = data[data['Index_Partida'] > 0]
 data = pd.DataFrame(data)
-data = data[data['Index_Partida']==1]
 
 ## Puxando o arquivo com a base de videos
 
@@ -87,6 +86,37 @@ df_acesso = pd.DataFrame(data_acesso)
 
 ## Sidebar inicial com seleção do modo do site
 select_mode = st.sidebar.selectbox('Eu quero ver os dados e videos de:', ['Um jogador', 'Uma partida'])
+
+# If condition para direcionar para a pagina jogador
+if select_mode == 'Um jogador':
+				   
+	# Adicionando lista de times ao sidebar
+	lista_times = data.Time_Jogador.unique()
+	lista_times = lista_times.tolist()
+	select_team = st.sidebar.selectbox('Selecione um time', lista_times)
+	
+	# Cortando data para o time selecionado
+	data = data[data['Time_Jogador'] == select_team]
+	
+	# Gerando base my_df apenas com o time selecionado
+	my_df_team = data[data['Time_Jogador'] == select_team]
+	
+	# Adicionando lista de jogadores ao sidebar
+	lista_jogadores = my_df_team.Nome_Jogador.unique()
+	lista_jogadores = lista_jogadores.tolist()
+	select_player = st.sidebar.selectbox('Selecione um jogador', lista_jogadores)
+	
+	# Adicionando lista de partidas ao sidebar
+	df_acesso = df_acesso[df_acesso['Nome_Jogador'] == select_player]
+	lista_partidas = df_acesso.Nome_Completo_Partida.unique()
+	lista_partidas = lista_partidas.tolist()
+	lista_partidas_final = ['Todas']
+	for partida in lista_partidas:
+		lista_partidas_final.append(partida)
+	select_partida = st.sidebar.selectbox('Selecione uma partida', lista_partidas_final)
+	
+	st.sidebar.write('Disponível agora video de melhores momentos e estatisticas de cada jogo. Para ver, selecionar *Uma Partida* na primeira caixinha')
+	st.sidebar.write('Pessoal, peço a ajuda de vocês para responder uma pesquisa rápida que vai me ajudar muito na construção do aplicativo! Segue o link: https://forms.gle/CDJiu5Csdq8xSZKH8')
 
 ## Definindo a base df_geral que converte a base input em algo mais estruturado
 
@@ -265,33 +295,7 @@ def transform_df_final(data):
 
 df_final = transform_df_final(data)
 	
-# If condition para direcionar para a pagina jogador
-if select_mode == 'Um jogador':
-				   
-	# Adicionando lista de times ao sidebar
-	lista_times = data.Time_Jogador.unique()
-	lista_times = lista_times.tolist()
-	select_team = st.sidebar.selectbox('Selecione um time', lista_times)
-	
-	# Gerando base my_df apenas com o time selecionado
-	my_df_team = data[data['Time_Jogador'] == select_team]
-	
-	# Adicionando lista de jogadores ao sidebar
-	lista_jogadores = my_df_team.Nome_Jogador.unique()
-	lista_jogadores = lista_jogadores.tolist()
-	select_player = st.sidebar.selectbox('Selecione um jogador', lista_jogadores)
-	
-	# Adicionando lista de partidas ao sidebar
-	df_acesso = df_acesso[df_acesso['Nome_Jogador'] == select_player]
-	lista_partidas = df_acesso.Nome_Completo_Partida.unique()
-	lista_partidas = lista_partidas.tolist()
-	lista_partidas_final = ['Todas']
-	for partida in lista_partidas:
-		lista_partidas_final.append(partida)
-	select_partida = st.sidebar.selectbox('Selecione uma partida', lista_partidas_final)
-	
-	st.sidebar.write('Disponível agora video de melhores momentos e estatisticas de cada jogo. Para ver, selecionar *Uma Partida* na primeira caixinha')
-	st.sidebar.write('Pessoal, peço a ajuda de vocês para responder uma pesquisa rápida que vai me ajudar muito na construção do aplicativo! Segue o link: https://forms.gle/CDJiu5Csdq8xSZKH8')
+
 
 	## Cache para my_df com jogador e partida selecionada
 	@st.cache_data
