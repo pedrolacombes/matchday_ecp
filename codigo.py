@@ -118,6 +118,24 @@ if select_mode == 'Um jogador':
 	st.sidebar.write('Disponível agora video de melhores momentos e estatisticas de cada jogo. Para ver, selecionar *Uma Partida* na primeira caixinha')
 	st.sidebar.write('Pessoal, peço a ajuda de vocês para responder uma pesquisa rápida que vai me ajudar muito na construção do aplicativo! Segue o link: https://forms.gle/CDJiu5Csdq8xSZKH8')
 
+	## Cache para my_df com jogador e partida selecionada
+	@st.cache_data
+	def transform_my_df(my_df_team, select_player, select_partida):
+	
+
+
+		# Gerando my_df apenas para jogador selecionado
+		my_df = my_df_team[my_df_team['Nome_Jogador'] == select_player]
+		my_df.reset_index(inplace = True)
+		
+		if select_partida != 'Todas':
+			my_df = my_df[my_df['Nome_Completo_Partida'] == select_partida]
+			my_df.reset_index(inplace=True)
+		
+		return my_df
+	
+	my_df = transform_my_df(my_df_team, select_player,select_partida)
+	
 ## Definindo a base df_geral que converte a base input em algo mais estruturado
 
 @st.cache_data
@@ -297,23 +315,7 @@ df_final = transform_df_final(data)
 	
 
 
-	## Cache para my_df com jogador e partida selecionada
-	@st.cache_data
-	def transform_my_df(my_df_team, select_player, select_partida):
-	
 
-
-		# Gerando my_df apenas para jogador selecionado
-		my_df = my_df_team[my_df_team['Nome_Jogador'] == select_player]
-		my_df.reset_index(inplace = True)
-		
-		if select_partida != 'Todas':
-			my_df = my_df[my_df['Nome_Completo_Partida'] == select_partida]
-			my_df.reset_index(inplace=True)
-		
-		return my_df
-	
-	my_df = transform_my_df(my_df_team, select_player,select_partida)
 
 	# declarando as 4 macro abas do aplicativo
 
