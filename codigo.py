@@ -1115,7 +1115,7 @@ if select_mode == 'Uma partida':
 	lista_partidas = data.Nome_Completo_Partida.unique()
 	lista_partidas = lista_partidas.tolist()
 	select_partida = st.sidebar.selectbox('Selecione um time', lista_partidas)
-	data = data[data[Nome_Completo_Partida] == select_partida]
+	data = data[data['Nome_Completo_Partida'] == select_partida]
 	st.sidebar.write('Disponível agora video de melhores momentos e estatisticas de cada jogo. Para ver, selecionar *Uma Partida* na primeira caixinha')
 	st.sidebar.write('Pessoal, peço a ajuda de vocês para responder uma pesquisa rápida que vai me ajudar muito na construção do aplicativo! Segue o link: https://forms.gle/CDJiu5Csdq8xSZKH8')
 	
